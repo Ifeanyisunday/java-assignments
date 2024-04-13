@@ -4,25 +4,16 @@ public class PatternC {
 	System.out.println("Pattern C\n");
 
 	int asterisk = 6;
+	int index = 1;
 
-	for(int count = 1; count <= asterisk; count++){
-		for(int counter = 1; counter >= count; counter++){
-			System.out.print(" ");
-
+	for(int count = asterisk; count >= index; count){
+		for(int counter = count; counter >= index; counter--){
+			System.out.print(counter);
 	        }
-		
-		for(int row = 6; row >= asterisk-count; row--){
-			System.out.print(row);
-
-	        }
-		
 		
 		System.out.println("");
-		}
+	}
 
 
 }
-
-
-
 }
