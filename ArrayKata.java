@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+import java.util.Arrays;
 public class ArrayKata{
 
 	public static void main(String... args){
@@ -7,7 +7,8 @@ public class ArrayKata{
 	
 	int[] numbers = {12, 3, 14, 10, 13};
 	/*int number = input.nextInt();*/
-	System.out.println(squareNumberIn(numbers));
+	int[] result = squareNumberIn(numbers);
+	System.out.println(Arrays.toString(result));
 
 	}
 
@@ -114,10 +115,10 @@ public class ArrayKata{
 	}
 
 	public static int[] evenNumberIn(int[] numbers){
-		int[] result = new int[3];
+		int[] result = new int[2];
 		
 		for(int i = 0; i < numbers.length; i++){
-			if(numbers[i] % i == 0){
+			if(numbers[i] % 2 == 0){
 				result[i] = numbers[i];
 			}	
 		}
@@ -136,7 +137,7 @@ public class ArrayKata{
 	}
 
 	public static int[] squareNumberIn(int[] numbers){
-		int[] result = new int[3];
+		int[] result = new int[numbers.length];
 		
 		for(int i = 0; i < numbers.length; i++){
 			if(numbers[i] % i == 0 && numbers[i] % i == i){
