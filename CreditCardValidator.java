@@ -3,120 +3,103 @@ import java.util.Scanner;
 public class CreditCardValidator{
 	public static void main(String[] args){
 	Scanner input = new Scanner(System.in);
-
 	
-	/*ArrayList<Integer>groupOfNumbers = new ArrayList<Integer>();*/
+	System.out.println("Hello, Kindly Enter Card details to verify");
+	String creditNumber = input.next();
 	
-	int[] arrayNumber = new int[16];
-	Integer numbers = 0;
-	System.out.println("Hello, kindly Enter card details to verify");
 	
-
-	
-	String index = input.nextLine();
-	numbers = Integer.valueOf(index.charAt(0));
-	arrayNumber[0] = numbers;
-	
-	numbers = Integer.valueOf(index.charAt(1));
-	arrayNumber[1] = numbers;
-
-	numbers = Integer.valueOf(index.charAt(2));
-	arrayNumber[2] = numbers;
-
-	numbers = Integer.valueOf(index.charAt(3));
-	arrayNumber[3] = numbers;
-
-	numbers = Integer.valueOf(index.charAt(4));
-	arrayNumber[4] = numbers;
-
-	numbers = Integer.valueOf(index.charAt(5));
-	arrayNumber[5] = numbers;
-
-	numbers = Integer.valueOf(index.charAt(6));
-	arrayNumber[6] = numbers;
-
-	numbers = Integer.valueOf(index.charAt(7));
-	arrayNumber[7] = numbers;
-
-	numbers = Integer.valueOf(index.charAt(8));
-	arrayNumber[8] = numbers;
-
-	numbers = Integer.valueOf(index.charAt(9));
-	arrayNumber[9] = numbers;
-
-	numbers = Integer.valueOf(index.charAt(10));
-	arrayNumber[10] = numbers;
-
-	numbers = Integer.valueOf(index.charAt(11));
-	arrayNumber[11] = numbers;
-	
-	numbers = Integer.valueOf(index.charAt(12));
-	arrayNumber[12] = numbers;
-
-	numbers = Integer.valueOf(index.charAt(13));
-	arrayNumber[13] = numbers;
-
-	numbers = Integer.valueOf(index.charAt(14));
-	arrayNumber[14] = numbers;
-
-	numbers = Integer.valueOf(index.charAt(15));
-	arrayNumber[15] = numbers;
-
-
-	if(arrayNumber[0] == 4){
-		System.out.println("Credit card type: Visa Cards");
-	}else if(arrayNumber[0] == 5){
-		System.out.println("Credit card type: MasterCard");
-	}else if(arrayNumber[0] == 37){
-		System.out.println("Credit card type: American Express Card");
-	}else if(arrayNumber[0] == 6){
-		System.out.println("Credit card type: Discover Cards");
+	if(creditNumber.charAt(0) == '4'){
+		System.out.println("Credit card Type: Visa Cards");
+		System.out.println("Credit card Number: " + creditNumber);
+		System.out.println("Credit card Digit Length: " + creditNumber.length());
+	}else if(creditNumber.charAt(0) == '5'){
+		System.out.println("Credit card Type: MasterCard");
+		System.out.println("Credit card Number: " + creditNumber);
+		System.out.println("Credit card Digit Length: " + creditNumber.length());
+	}else if(creditNumber.charAt(0) == '3' && creditNumber.charAt(1) == '7'){
+		System.out.println("Credit card Type: American Express Card");
+		System.out.println("Credit card Number: " + creditNumber);
+		System.out.println("Credit card Digit Length: " + creditNumber.length());
+	}else if(creditNumber.charAt(0) == '6'){
+		System.out.println("Credit card Type: Discover Cards");
+		System.out.println("Credit card Number: " + creditNumber);
+		System.out.println("Credit card Digit Length: " + creditNumber.length());
+	}else{
+		while(true){
+			System.out.println("Credit card Type: Invaild card!");
+			System.out.println("Credit card Number: " + creditNumber);
+			System.out.println("Credit card Digit Length: " + creditNumber.length());
+			System.out.println("Credit Card Validity Status: Invalid");
+			enterCreditDetails();
+		}
 	}
 
-	System.out.print("Credit Card Number: ");
+	
+if(creditNumber.length() < 16){
+		System.out.println("Credit card Type: Invaild card!");
+		System.out.println("Credit card Number: " + creditNumber);
+		System.out.println("please enter valid card number");
+		System.out.println("Credit Card Validity Status: Invalid");
+		enterCreditDetails();
+}
 
-	/*for(int i = 0; 1 < arrayNumber.length; i++){
-		System.out.print(arrayNumber[i]);
-	}*/
+	long stringToNumbers = Long.parseLong(creditNumber);
+	int[] arrayOfStringNumbers = new int[creditNumber.length()];
+
+	for(int count = arrayOfStringNumbers.length - 1; count >= 0; count--){
+		arrayOfStringNumbers[count] = (int)(stringToNumbers % 10);
+		stringToNumbers = stringToNumbers / 10;
+        }
 
 
-        int total = 0;
-	int getSingle = 0;
-	int getSingle1 = 0;
-	int multiply;
-	int sumSingleDigits;
+        int sum1 = 0;
+	int firstNumber = 0;
+	int secondNumber = 0;
+	int multiply = 0;
+	int sumDoubleDigits = 0;
 	
 
-	for(int i = 0; i < arrayNumber.length; i+=2){
-		multiply = arrayNumber[i] * 2;
+	for(int i = arrayOfStringNumbers.length - 2; i >= 0; i-=2){
+		multiply = arrayOfStringNumbers[i] * 2;
 
-		if(multiply / 10 != 0 && multiply % 10 != 0 || multiply % 10 == 0){
-			getSingle = multiply / 10;
-                        getSingle1 = multiply % 10;
- 			sumSingleDigits = getSingle + getSingle1;
-			total += sumSingleDigits;	
-		}else {
-			total += multiply;
+		if(multiply > 9){
+			firstNumber = multiply / 10;
+                        secondNumber = multiply % 10;
+ 			sumDoubleDigits = firstNumber + secondNumber;
+			sum1 += sumDoubleDigits;	
+		}else if(multiply <= 9){
+			sum1 += multiply;
 		}
 	}
 
 
+
+	
 	int sumOddPlaces = 0;
-
-	for(int i = 0; i < arrayNumber.length; i++){
+	for(int i = arrayOfStringNumbers.length - 1; i >= 0; i-=2){
 		if(i % 2 != 0){
-			sumOddPlaces += arrayNumber[i];	
-		}
+			sumOddPlaces += arrayOfStringNumbers[i];
+		}	
 	}
 
-	int sum = total + sumOddPlaces;
 
-	if(sum % 10 == 0){
-		System.out.println("Valid");
-	}else {
-		System.out.println("Invalid");	
+	int sumAll = sum1 + sumOddPlaces;
+
+	if(sumAll % 10 == 0){
+		System.out.println("Credit Card Validity Status: Valid");
+	}else{
+		System.out.println("Credit Card Validity Status: Invalid");	
 	}
 
 }
+
+
+public static void enterCreditDetails(){
+
+	Scanner input = new Scanner(System.in);
+	System.out.println("Hello, Kindly Enter Card details to verify");
+	String creditNumber = input.nextLine();
+}
+
 
 }
