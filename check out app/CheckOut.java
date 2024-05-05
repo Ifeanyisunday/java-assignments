@@ -51,8 +51,6 @@ public class CheckOut{
 
 	
 
-	public payList1(){
-
 	System.out.print("");
 	System.out.printf("%s%n%s%n%s%n%s%n%s%n%s%s%n%s%s%n", "SEMICOLON STORES","MAIN BRANCH", "LOCATION: HERBERT MACAULAY WAY, SABO YABA, LAGOS.", "TEL: 03293828343", "Date : 18-Dec-24 8:48:11pm", "Cashier : ", cashierName, "Customer Name: ", name);
 	System.out.println("===========================================================================================================================================================================================================================");
@@ -69,6 +67,7 @@ public class CheckOut{
 		System.out.println();
 		i++;
 	}
+	
 
 	System.out.printf("%s%12.2f%n", "Sub-total:", totalAmount1);
 	System.out.printf("%s%12.2f%n", "Discount:", getDiscount);
@@ -80,7 +79,6 @@ public class CheckOut{
 	System.out.println("===========================================================================================================================================================================================================================");
 	System.out.println("THIS IS NOT A RECEIPT KINDLY PAY " + totalBill);
 	System.out.println("===========================================================================================================================================================================================================================");
-}
 
 
 
