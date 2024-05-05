@@ -17,7 +17,6 @@ public class StudentGrade{
 	double[] average = new double[students];
 	double studentAverageTotal = 0; 
 	for(int i = 0; i < students; i++){
-		//System.out.println("Enter score for student " + count);
 		for(int j = 0; j < subjects; j++){
 				System.out.println("Entering score for student "+ count);
 				System.out.println("Enter score for subject " + index);
@@ -274,29 +273,5 @@ System.out.printf("%s%.1f", "Class Average score is: ", averageOfClassTotal);
 
 }
 
-	public static int[] defaultPosition(int[] size){
-		int[] defaultPos = new int[size.length];
-		for(int i = 0; i < size.length; i++){
-			defaultPos[i] = 1;
-		}
-		
-		return defaultPos;
-	}
-
-	public static int[] getPosition(int[] arr){
-		//int[] changePos = new int[arr.length()];
-
-		int[] sortPos =  defaultPosition(arr);
-			
-		for(int count = 0; count < arr.length; count++){
-			for(int counter = 0; counter < arr.length; counter++){
-				if(counter > count){
-					sortPos[counter] += 1;	
-				}
-			}
-				
-		}
-		return sortPos;
-	}
 
 }
