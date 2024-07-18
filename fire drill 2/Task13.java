@@ -26,7 +26,7 @@ public class Task13{
 			if(numbers[i] % 2 == 0){
 				swap[index] = numbers[i];
 
-			}else if{
+			}else {
 				swap[count] = numbers[i];
 			}
 			count++;

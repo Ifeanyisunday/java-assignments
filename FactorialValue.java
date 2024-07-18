@@ -1,46 +1,20 @@
-<<<<<<< HEAD
 import java.util.Scanner;
 
-public class FactorialValue{
-	public static void main(String... args){
+public class FactorialValue {
+	public static void main(String... args) {
 
-	Scanner input = new Scanner(System.in);
+		Scanner input = new Scanner(System.in);
 
-	System.out.println("Enter any number: ");
-	int number = input.nextInt();
-	int fac = number;
+		System.out.println("Enter any number: ");
+		int number = input.nextInt();
+		int fac = number;
 
-	int factorial = 1;
-	while (number > 1){
-		factorial*=number;
-		number--;
+		int factorial = 1;
+		while (number > 1) {
+			factorial *= number;
+			number--;
+		}
+
+		System.out.printf("%s%d!%s = %d", "The factorial of ", fac, " is", factorial);
 	}
-
-        System.out.printf("%s%d!%s = %d", "The factorial of ", fac, " is", factorial);
-
-	
-}	
-=======
-import java.util.Scanner;
-
-public class FactorialValue{
-	public static void main(String... args){
-
-	Scanner input = new Scanner(System.in);
-
-	System.out.println("Enter any number: ");
-	int number = input.nextInt();
-	int fac = number;
-
-	int factorial = 1;
-	while (number > 1){
-		factorial*=number;
-		number--;
-	}
-
-        System.out.printf("%s%d!%s = %d", "The factorial of ", fac, " is", factorial);
-
-	
-}	
->>>>>>> ead790bad34f7d5e5305c429a0529f36db284fb9
 }

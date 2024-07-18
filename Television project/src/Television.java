@@ -1,36 +1,67 @@
-import java.util.function.Supplier;
-
 public class Television {
     private boolean isOn;
     private int channelState;
+    private int volumeState;
 
-    public void setChannelState(int number){
-        channelState = number;
+    Television(){
+        this.isOn = false;
+        this.volumeState = 1;
+        this.channelState = 0;
     }
 
-    public boolean switchOn() {
-            return true;
+    public void changeChannelStateByEnteringNumber(int number){
+        if(channelState >= 0 && channelState <= 100){
+            channelState = number;
+        }else{
+            System.out.println("invalid channel number");
+        }
     }
 
-    public boolean switchOff() {
-            return false;
+    public void increaseVolumeByNumber(){
+        if(volumeState >= 1 && volumeState <= 100){
+            int result = volumeState ++;
+        }
     }
 
-    public String changeChannelByIncreasingNumber(int number) {
-        setChannelState(number);
-        channelState++;
-        return "Channel " + String.valueOf(channelState++);
+    public void decreaseVolumeByNumber(){
+        if(volumeState >= 1 && volumeState <= 100){
+            volumeState --;
+        }
+    }
+
+    public void switchOn() {
+        isOn = true;
+    }
+
+    public void switchOff() {
+        isOn = false;
+    }
+
+    public boolean getIsOn(){
+        return isOn;
+    }
+
+    public void changeChannelByIncreasingNumber() {
+        if(initialChannelState() >= 0 && initialChannelState() <= 100){
+            channelState++;
+        }
     }
 
 
-    public String changeChannelByDecreasingNumber(int number) {
-        setChannelState(number);
-        channelState--;
-        return "Channel " + String.valueOf(channelState);
+    public void changeChannelByDecreasingNumber() {
+        if(initialChannelState() > 0 && initialChannelState() <= 100){
+            channelState--;
+        }
     }
 
-    public String exactChannel(int number) {
-        setChannelState(number);
-        return "Channel " + String.valueOf(channelState);
+    public int initialChannelState() {
+        if(channelState < 0){
+            channelState = 0;
+        }
+        return channelState;
+    }
+
+    public int getChannelState(){
+        return channelState;
     }
 }

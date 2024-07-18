@@ -1,36 +1,54 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TelevisionTest {
+    Television samsung;
 
-    @Test
-    public void turnOn(){
-        Television samsung = new Television();
-        assertTrue(samsung.switchOn());
+    @BeforeEach
+    public void setAll(){
+        samsung = new Television();
     }
 
     @Test
-    public void turnOff(){
-        Television samsung = new Television();
-        assertFalse(samsung.switchOff());
+    public void checkIfItsOn(){
+        samsung.getIsOn();
+        samsung.switchOn();
+        assertTrue(samsung.getIsOn());
     }
 
     @Test
-    public void changeChannelsByIncrement(){
-        Television samsung = new Television();
-        assertEquals("Channel 2", samsung.changeChannelByIncreasingNumber(1));
+    public void checkIfItsOff(){
+        samsung.getIsOn();
+        samsung.switchOff();
+        assertFalse(samsung.getIsOn());
     }
 
     @Test
-    public void changeChannelsByDecrement(){
-        Television samsung = new Television();
-        assertEquals("Channel 5", samsung.changeChannelByDecreasingNumber(6));
+    public void changeChannel(){
+        samsung.initialChannelState();
+        samsung.changeChannelStateByEnteringNumber(50);
+        assertEquals(50, samsung.initialChannelState());
     }
 
     @Test
-    public void checkIfChannelIsExact(){
-        Television samsung = new Television();
-        assertEquals("Channel 5", samsung.exactChannel(5));
+    public void changeChannelByIncreasing(){
+        samsung.initialChannelState();
+        samsung.changeChannelByIncreasingNumber();
+        assertEquals(1, samsung.initialChannelState());
     }
+
+    @Test
+    public void changeChannelBydecreasing(){
+        samsung.initialChannelState();
+        samsung.changeChannelByDecreasingNumber();
+        samsung.changeChannelByIncreasingNumber();
+        samsung.changeChannelByIncreasingNumber();
+        samsung.changeChannelByDecreasingNumber();
+        samsung.changeChannelByDecreasingNumber();
+        samsung.changeChannelByDecreasingNumber();
+        assertEquals(0, samsung.getChannelState());
+    }
+
 }

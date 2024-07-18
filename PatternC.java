@@ -6,7 +6,7 @@ public class PatternC {
 	int asterisk = 6;
 	int index = 1;
 
-	for(int count = asterisk; count >= index; count){
+	for(int count = asterisk; count >= index; ){
 		for(int counter = count; counter >= index; counter--){
 			System.out.print(counter);
 	        }
