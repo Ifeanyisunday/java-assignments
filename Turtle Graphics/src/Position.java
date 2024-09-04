@@ -1,17 +1,34 @@
+import java.util.Arrays;
+
 public class Position {
-    private int row;
-    private int column;
+    private int row = 0;
+    private int col = 0;
 
-    Position(int row, int column){
+    public Position(int row, int col){
         this.row = row;
-        this.column = column;
+        this.col = col;
     }
 
-    @Override
-    public String toString(){
-        return "{ " + new Position(0,0) + "}";
+    public int getRow() {
+        return row;
     }
 
+    public void setRow(int row) {
+        this.row += row;
+    }
 
+    public int getCol() {
+        return col;
+    }
 
+    public void setCol(int col) {
+        this.col += col;
+    }
+
+    public String toString() {
+        return "Position{" +
+                "row=" + row +
+                ", col=" + col +
+                '}';
+    }
 }

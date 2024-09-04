@@ -1,6 +1,7 @@
 public class TurpleGraphics {
     private boolean penUp = true;
     private Direction point = Direction.EAST;
+    private Position position = new Position(0, 0);;
 
     public boolean getCurrentState() {
         return penUp;
@@ -27,18 +28,16 @@ public class TurpleGraphics {
     }
 
     public Position getCurrentPosition(){
-        return new Position(0, 0);
+        position = new Position(position.getRow(), position.getCol());
+        return position;
     }
 
 
     public String moveFoward(int number) {
-        int row = 0;
-        int column = 0;
-        Position position;
-        if(getCurrentDirection() == Direction.EAST) column += number - 1 ; position = new Position(0, 0 + column);
-        if(getCurrentDirection() == Direction.SOUTH) row += number - 1; position = new Position(0 + row, 0);
-        if(getCurrentDirection() == Direction.WEST) column += number - 1; position = new Position(0, 0 + column);
-        if(getCurrentDirection() == Direction.NORTH) row += number - 1; position = new Position(0 + row, 0);
+        if(getCurrentDirection() == Direction.EAST) {position.setCol(number - 1); position = new Position(position.getRow(), position.getCol());}
+        else if(getCurrentDirection() == Direction.SOUTH){ position.setRow(number - 1); position = new Position(position.getRow(), position.getCol());}
+        else if(getCurrentDirection() == Direction.WEST) {position.setCol(-(number)); position = new Position(position.getRow(), position.getCol());}
+        else if(getCurrentDirection() == Direction.NORTH) {position.setRow(-(number)); position = new Position(position.getRow(), position.getCol());}
         return position.toString();
     }
 }

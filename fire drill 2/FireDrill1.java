@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 public class FireDrill1{
 	public static void main(String... args){
@@ -12,6 +13,8 @@ public class FireDrill1{
 		int scoreInput = input.nextInt();
 		scores[i] = scoreInput;
 	}
+
+	System.out.print(Arrays.toString(scores));
 
 	}
 

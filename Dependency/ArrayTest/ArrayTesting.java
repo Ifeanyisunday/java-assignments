@@ -49,4 +49,22 @@ public class ArrayTesting {
         personalList.clear();
         assertTrue(personalList.isEmpty());
     }
+
+    @Test
+    public void testRemoveByString(){
+        personalList.add("star");
+        personalList.add("boi");
+        personalList.add("ify");
+        personalList.remove("boi");
+        assertEquals("star", personalList.get(0));
+    }
+
+    @Test
+    public void testIfStringContains(){
+        personalList.add("star");
+        personalList.add("boi");
+        personalList.add("ify");
+        personalList.contains("boi");
+        assertTrue(personalList.contains("boi"));
+    }
 }

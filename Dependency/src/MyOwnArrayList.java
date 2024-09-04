@@ -1,6 +1,8 @@
+import java.util.Arrays;
+
 public class MyOwnArrayList implements PersonalList{
     private String[] dataBase;
-    private int arrayCurrentLength = 5;
+    private int arrayCurrentLength = 1;
     private int sizeCount;
     boolean dataStatus;
 
@@ -9,9 +11,10 @@ public class MyOwnArrayList implements PersonalList{
         dataBase = new String[arrayCurrentLength];
     }
 
-    public int increaseArrayLength(){
+    public int capacity(){
         if(sizeCount == arrayCurrentLength){
             arrayCurrentLength = arrayCurrentLength * 2;
+            dataBase = Arrays.copyOf(dataBase, arrayCurrentLength);
         }
         return arrayCurrentLength;
     }
@@ -39,7 +42,12 @@ public class MyOwnArrayList implements PersonalList{
 
     @Override
     public void remove(String index) {
-
+        for(int i = 0; i < size() - 1; i++){
+            if(dataBase[i].equals(index)) {
+                dataBase[i] = dataBase[i + 1];
+            }
+        }
+        sizeCount--;
     }
 
     @Override
@@ -60,17 +68,17 @@ public class MyOwnArrayList implements PersonalList{
 
     @Override
     public void add(String element) {
-        increaseArrayLength();
+        capacity();
         dataBase[sizeCount] = element;
         sizeCount++;
     }
 
     public boolean contains(String index){
-
+        for(String element : dataBase){
+            if(element.equals(index)){
+                return true;
+            }
+        }
         return false;
-    }
-
-    public int capacity(){
-        return 0;
     }
 }

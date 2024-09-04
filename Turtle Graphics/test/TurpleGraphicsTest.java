@@ -52,7 +52,11 @@ public class TurpleGraphicsTest {
     public void movingSteps(){
         graphic.getCurrentPosition();
         graphic.getCurrentDirection();
-        assertEquals(new Position(0, 5), graphic.moveFoward(5));
+        assertEquals("Position{row=0, col=4}", graphic.moveFoward(5));
+        graphic.turnDirectionRight();
+        assertEquals("Position{row=5, col=4}", graphic.moveFoward(6));
+        graphic.turnDirectionRight();
+        assertEquals("Position{row=5, col=1}", graphic.moveFoward(3));
     }
 
 

@@ -8,9 +8,9 @@ public class ContactList {
         contacts.add(newContact);
     }
 
-    public void editContact(String name1, String name2, String number){
-        PhoneBookClass contactToEdit = findContact(number);
-        contactToEdit.editContact(name1, name2, number);
+    public void editContact(String name1, String name2, String number1, String number2){
+        PhoneBookClass contactToEdit = findContact(number1);
+        contactToEdit.editContact(name1, name2, number2);
     }
 
     public void editNo(String currentPhoneNo, String newPhoneNo){
@@ -19,9 +19,9 @@ public class ContactList {
     }
 
     public void removeContact(String phoneNo){
-        for(PhoneBookClass contact : contacts){
-            boolean contactIsFound = phoneNo.equals(contact.getPhoneNumber());
-            if(contactIsFound){contacts.remove(contact);}
+        PhoneBookClass contactFound = findContact(phoneNo);
+        if(phoneNo.equals(contactFound.getPhoneNumber())){
+            contacts.remove(contactFound);
         }
     }
 
@@ -30,6 +30,10 @@ public class ContactList {
             return element.toString();
         }
         return null;
+    }
+
+    public int contactSize(){
+        return contacts.size();
     }
 
 

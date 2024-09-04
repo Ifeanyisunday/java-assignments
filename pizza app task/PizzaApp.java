@@ -43,7 +43,7 @@ public class PizzaApp{
 				price = pricePerBox[3];
 				break;
 		default:
-			while(pizzaType != "sapa size" || pizzaType != "small money" || pizzaType != "big boys" || pizzaType != "odogwu"){
+			while(true){
 				System.out.println("Invalid input! please enter correct pizza type");
 				pizzaType = input.nextLine();
 			}
