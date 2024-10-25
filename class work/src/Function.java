@@ -11,8 +11,8 @@ public class Function {
                     newArr[i] = true;
                 }
             }
-
-            System.out.println(Arrays.toString(newArr));
             return Arrays.toString(newArr);
         }
+
+
     }

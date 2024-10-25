@@ -10,4 +10,25 @@ public class FunctionTest {
         assertEquals("[false, true, false, false, false, false, true]", function.displayTrueOrFalse(numbers));
     }
 
+    @Test
+    public void testStr(){
+        StringArray alpha = new StringArray();
+        String letters = "wood";
+        assertTrue(alpha.checkAlphabet(letters));
+    }
+
+    @Test
+    public void testRegexEmail(){
+        StringRegex stringRegex = new StringRegex();
+        String email = "sundayjnr10@gmail.com";
+        assertTrue(stringRegex.emailValidation(email));
+    }
+
+    @Test
+    public void testRegexPhoneNo(){
+        StringRegex stringRegex = new StringRegex();
+        String phoneNo = "08127980150";
+        assertTrue(stringRegex.phoneNoValidation(phoneNo));
+    }
+
 }

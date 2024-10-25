@@ -14,15 +14,6 @@ public class HugeInteger {
     }
 
 
-//    public HugeInteger add(HugeInteger number){
-//        int highestElement = Math.max(this.elements.length, number.elements.length);
-//
-//        for(int i = 0; i < highestElement; i++){
-//            if
-//        }
-//
-//    }
-
 
     public int[] getElements() {
         return elements;
@@ -34,6 +25,30 @@ public class HugeInteger {
             string += String.valueOf(elements[i]);
         }
         return string;
+    }
+
+
+    public HugeInteger add(HugeInteger number) {
+        int maxLength = Math.max(this.elements.length, number.elements.length);
+        int[] result = new int[maxLength + 1]; // +1 for possible carry overflow
+
+        int carry = 0;
+        for (int i = 0; i < maxLength; i++) {
+            int thisChunk = (i < this.elements.length) ? this.elements[i] : 0;
+            int otherChunk = (i < number.elements.length) ? number.elements[i] : 0;
+
+            int sum = thisChunk + otherChunk + carry;
+            carry = sum / bitSize;
+            result[i] = sum % bitSize;
+        }
+
+        // If there's still a carry left, put it in the most significant chunk
+        if (carry > 0) {
+            result[maxLength] = carry;
+        }
+
+        // Convert result to a string and return a new SimpleBigInteger
+        return new HugeInteger(convertArrayToString(result));
     }
 
 
